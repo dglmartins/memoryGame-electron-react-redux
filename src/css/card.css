@@ -1,0 +1,19 @@
+.column {
+	height: 8em;
+	margin-left: 0.05em;
+	margin-bottom: 0.05em;
+	float: left;
+	padding-left: 1em;
+	padding-right: 1em;
+	width: 33%;
+	border: 1px solid gray;
+  /*background-image: url(../../../images/logo.png);*/
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	-webkit-transition-delay: 0;
+	transition-delay: 0;
+}

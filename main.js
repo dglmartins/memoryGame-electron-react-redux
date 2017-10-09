@@ -7,13 +7,23 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+const debug = /--debug/.test(process.argv[2])
+
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function createWindow () {
+  var windowOptions = {
+    width: 1080,
+    minWidth: 680,
+    height: 840,
+    title: app.getName()
+  }
+
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow(windowOptions)
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -24,6 +34,12 @@ function createWindow () {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
+  if (debug) {
+    mainWindow.webContents.openDevTools()
+    mainWindow.maximize()
+    require('devtron').install()
+  }
+
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -37,7 +53,14 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', function () {
+  //add React dev extension
+  BrowserWindow.addDevToolsExtension('/Users/danilomartins/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.5.2_0')
+
+  //add Redux dev extension
+  BrowserWindow.addDevToolsExtension('/Users/danilomartins/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.15.1_0')
+  createWindow()
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
