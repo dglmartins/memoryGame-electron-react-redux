@@ -7,13 +7,13 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 npm install
 
-# For dev mode without devtools
+For dev mode without devtools:
 npm start
 
-# For dev mode with devtools - In main.js change react and redux devtools-extension paths that are correct for your machine. This is done in the  app.on('ready') function BrowserWindow.addDevToolsExtension call.
+For dev mode with devtools - In main.js change react and redux devtools-extension paths that are correct for your machine. This is done in the  app.on('ready') function BrowserWindow.addDevToolsExtension call:
 npm run dev
 
-# to package for mac
+to package for mac:
 npm run package:mac
 
 ## Resources
